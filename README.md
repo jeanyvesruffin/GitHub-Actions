@@ -37,3 +37,42 @@ Python 3.15.0a7 — Version alpha, non disponible sur les runners GitHub-hosted 
 ```
 
 Node 25.8.1 — Disponible mais hors LTS. actions/setup-node le supporte via node-version: "25.8.1", ça devrait fonctionner sans problème.
+
+## Badges CI — à ajouter dans ton README.md
+
+> Remplace `TON_ORG` et `TON_REPO` par les vraies valeurs GitHub.
+
+```markdown
+## CI Status
+
+| Service     | Status |
+|-------------|--------|
+| Backend     | [![CI – Backend](https://github.com/TON_ORG/TON_REPO/actions/workflows/ci-backend.yml/badge.svg)](https://github.com/TON_ORG/TON_REPO/actions/workflows/ci-backend.yml) |
+| Frontend    | [![CI – Frontend](https://github.com/TON_ORG/TON_REPO/actions/workflows/ci-frontend.yml/badge.svg)](https://github.com/TON_ORG/TON_REPO/actions/workflows/ci-frontend.yml) |
+| Workers     | [![CI – Workers](https://github.com/TON_ORG/TON_REPO/actions/workflows/ci-workers.yml/badge.svg)](https://github.com/TON_ORG/TON_REPO/actions/workflows/ci-workers.yml) |
+| Crossmatch  | [![CI – Crossmatch](https://github.com/TON_ORG/TON_REPO/actions/workflows/ci-crossmatch.yml/badge.svg)](https://github.com/TON_ORG/TON_REPO/actions/workflows/ci-crossmatch.yml) |
+| Spectral    | [![CI – Spectral](https://github.com/TON_ORG/TON_REPO/actions/workflows/ci-spectral.yml/badge.svg)](https://github.com/TON_ORG/TON_REPO/actions/workflows/ci-spectral.yml) |
+```
+
+## Emplacement des fichiers dans le repo
+
+Les workflows doivent être placés dans `.github/workflows/` à la **racine** du repo
+(pas dans `docs/.github/workflows/`) pour être reconnus par GitHub Actions :
+
+```
+.github/
+└── workflows/
+    ├── ci-backend.yml
+    ├── ci-frontend.yml
+    ├── ci-workers.yml
+    ├── ci-crossmatch.yml
+    └── ci-spectral.yml
+```
+
+## Bloquer le merge en cas d'échec
+
+Dans **Settings → Branches → Branch protection rules** sur `main` :
+
+* ✅ Require status checks to pass before merging
+* Ajoute chaque job : `Maven Build & Test`, `Lint, Build & Test`, `Lint & Pytest`
+* ✅ Require branches to be up to date before merging.
