@@ -59,7 +59,7 @@ Node 25.8.1 — Disponible mais hors LTS. actions/setup-node le supporte via nod
 Les workflows doivent être placés dans `.github/workflows/` à la **racine** du repo
 (pas dans `docs/.github/workflows/`) pour être reconnus par GitHub Actions :
 
-```
+```tree
 .github/
 └── workflows/
     ├── ci-backend.yml
@@ -75,8 +75,7 @@ Les workflows doivent être placés dans `.github/workflows/` à la **racine** d
 2. requirements.txt — Les workflows Python supposent que ce fichier existe dans chaque service ainsi qu'un fichier test.py. Exemples :
 
 * [requirements.txt](requirements.txt)
-* [ampty test_placeholder.py ](test_placeholder.py)
-
+* [ampty test_placeholder.py](test_placeholder.py)
 
 1. Bloquer le merge — Une fois les workflows poussés, va dans Settings → Branches → Branch protection rules sur main et active "Require status checks to pass before merging" en sélectionnant les jobs CI.
 2. Frontend — Le workflow suppose un script lint dans package.json. Si ce n'est pas encore le cas : "lint": "ng lint".
