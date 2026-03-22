@@ -72,11 +72,9 @@ Les workflows doivent être placés dans `.github/workflows/` à la **racine** d
 ## Points importants à vérifier
 
 1. Emplacement des fichiers — GitHub Actions ne lit que .github/workflows/ à la racine du repo. Ton dossier actuel est docs/.github/workflows/ — il faudra déplacer les fichiers ou recréer la structure à la racine.
-2. requirements.txt — Les workflows Python supposent que ce fichier existe dans chaque service. EXemples :
+2. requirements.txt — Les workflows Python supposent que ce fichier existe dans chaque service. Exemples :
 
-* [workers-requirements.txt](workers-requirements.txt)
-* [spectral-requirements.txt](spectral-requirements.txt)
-* [crossmatch-requirements.txt](crossmatch-requirements.txt)
+* [requirements.txt](requirements.txt)
   
 1. Bloquer le merge — Une fois les workflows poussés, va dans Settings → Branches → Branch protection rules sur main et active "Require status checks to pass before merging" en sélectionnant les jobs CI.
 2. Frontend — Le workflow suppose un script lint dans package.json. Si ce n'est pas encore le cas : "lint": "ng lint".
